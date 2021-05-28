@@ -7,6 +7,16 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace SecuringWebApiJwt.Helpers
 {
+    /*
+    El JWT se basa en algoritmos de firma digital, uno de estos algoritmos que se recomienda y 
+    que estamos utilizando aquí es el algoritmo HMac Hashing utilizando un tamaño de clave de 256 bits.
+
+    Estamos generando la clave a partir de un secreto aleatorio que generamos anteriormente usando la clase HMACSHA256. 
+    Puede usar cualquier cadena aleatoria, pero asegúrese de usar un texto largo y difícil de adivinar y 
+    mejor vaya con la clase HMACSHA256 como se ilustra en el ejemplo de código anterior.
+    Puede guardar el secreto generado en una constante o appsettings y cargarlo dentro del archivo de inicio.cs
+    */
+
     public class TokenHelper
     {
         public const string Issuer = "http://codingsonata.com";
