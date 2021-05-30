@@ -18,6 +18,7 @@ namespace SecuringWebApiJwt.Controllers
     {
         private readonly ICustomerService _customService;
 
+        //interfaz publica
         public CustomersController(ICustomerService customer){
 
             this._customService = customer;

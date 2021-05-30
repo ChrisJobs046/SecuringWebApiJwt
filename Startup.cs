@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using SecuringWebApiJwt.Interfaces;
+using SecuringWebApiJwt.Services;
 
 namespace SecuringWebApiJwt
 {
@@ -32,6 +34,9 @@ namespace SecuringWebApiJwt
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SecuringWebApiJwt", Version = "v1" });
             });
+
+            //agregamos la implementacion de nuestra interfaz a los servicios dentro del scope o entorno
+            services.AddScoped<ICustomerService, CustomerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +47,7 @@ namespace SecuringWebApiJwt
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SecuringWebApiJwt v1"));
+
             }
 
             app.UseHttpsRedirection();
